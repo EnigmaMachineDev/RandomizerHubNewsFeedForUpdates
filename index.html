@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Game Patch Notes Feed - Stay updated with the latest patches for Grim Dawn, Path of Exile 2, Soulframe, Warframe, and Space Marine 2">
+    <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48dGV4dCB5PSIuOWVtIiBmb250LXNpemU9IjkwIj7wn5OwPC90ZXh0Pjwvc3ZnPg==" type="image/svg+xml">
+    <title>Game Patch Notes Feed - Randomizer Hub Updates</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <h1>Game Patch Notes Feed</h1>
+        </div>
+        <p class="tagline">Stay up-to-date with the latest game patches for your randomizer tools</p>
+        <div class="nav-links">
+            <a href="../EnigmaMachineRandomizerHub/index.html">← Back to Randomizer Hub</a>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <!-- Filter Section -->
+        <section class="filter-section">
+            <h2 class="section-title">Filter Games</h2>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-game="all">All Games</button>
+                <button class="filter-btn" data-game="grim-dawn">Grim Dawn</button>
+                <button class="filter-btn" data-game="poe2">Path of Exile 2</button>
+                <button class="filter-btn" data-game="soulframe">Soulframe</button>
+                <button class="filter-btn" data-game="warframe">Warframe</button>
+                <button class="filter-btn" data-game="space-marine-2">Space Marine 2</button>
+            </div>
+        </section>
+
+        <!-- Refresh Button -->
+        <section class="refresh-section">
+            <button id="refreshBtn" class="refresh-btn">🔄 Refresh Feed</button>
+            <span id="lastUpdated" class="last-updated"></span>
+        </section>
+
+        <!-- News Feed -->
+        <section class="news-feed">
+            <h2 class="section-title">Latest Patch Notes</h2>
+            <div id="newsFeed" class="news-grid">
+                <!-- News items will be dynamically inserted here -->
+                <div class="loading-message">
+                    <div class="spinner"></div>
+                    <p>Loading patch notes...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Links Section -->
+        <section class="quick-links-section">
+            <h2 class="section-title">Official Patch Notes Sources</h2>
+            <div class="links-grid">
+                <a href="https://store.steampowered.com/news/?appids=219990" target="_blank" rel="noopener noreferrer" class="link-card" data-game="grim-dawn">
+                    <div class="link-icon">📰</div>
+                    <div class="link-content">
+                        <h3 class="link-title">Grim Dawn</h3>
+                        <p class="link-description">Steam Community Announcements</p>
+                    </div>
+                </a>
+
+                <a href="https://www.pathofexile.com/forum/view-forum/patch-notes" target="_blank" rel="noopener noreferrer" class="link-card" data-game="poe2">
+                    <div class="link-icon">📰</div>
+                    <div class="link-content">
+                        <h3 class="link-title">Path of Exile 2</h3>
+                        <p class="link-description">Official Forum Patch Notes</p>
+                    </div>
+                </a>
+
+                <a href="https://www.soulframe.com/en/patch-notes" target="_blank" rel="noopener noreferrer" class="link-card" data-game="soulframe">
+                    <div class="link-icon">📰</div>
+                    <div class="link-content">
+                        <h3 class="link-title">Soulframe</h3>
+                        <p class="link-description">Official Patch Notes</p>
+                    </div>
+                </a>
+
+                <a href="https://www.warframe.com/patch-notes" target="_blank" rel="noopener noreferrer" class="link-card" data-game="warframe">
+                    <div class="link-icon">📰</div>
+                    <div class="link-content">
+                        <h3 class="link-title">Warframe</h3>
+                        <p class="link-description">Official Patch Notes</p>
+                    </div>
+                </a>
+
+                <a href="https://community.focus-entmt.com/focus-entertainment/space-marine-2/forums/4-patch-notes" target="_blank" rel="noopener noreferrer" class="link-card" data-game="space-marine-2">
+                    <div class="link-icon">📰</div>
+                    <div class="link-content">
+                        <h3 class="link-title">Space Marine 2</h3>
+                        <p class="link-description">Focus Entertainment Community</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="nav-links">
+            <a href="../EnigmaMachineRandomizerHub/index.html">Home</a>
+            <a href="../EnigmaMachineRandomizerHub/about.html">About</a>
+            <a href="../EnigmaMachineRandomizerHub/contact.html">Contact</a>
+        </div>
+        <div class="footer-text">
+            <p>Game Patch Notes Feed - Part of Enigma Machine Randomizer Hub</p>
+        </div>
+        <div class="coffee-link">
+            <a href="https://buymeacoffee.com/EnigmaMachineDev" target="_blank" rel="noopener noreferrer">
+                ☕ Buy me a coffee
+            </a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
