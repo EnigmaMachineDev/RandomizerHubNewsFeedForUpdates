@@ -1,0 +1,6 @@
+# Netlify security headers (also honored by Cloudflare Pages; no-op on GitHub Pages).
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
