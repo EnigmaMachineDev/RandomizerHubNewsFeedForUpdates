@@ -4,16 +4,63 @@
     box-sizing: border-box;
 }
 
+/*
+ * Theme: the suite's green palette in light and dark (Roadwrench's). :root is
+ * light; the dark green applies under [data-theme="dark"], which theme.js sets
+ * before first paint from the saved preference or the system setting. Without
+ * JavaScript, the media query below still follows the system.
+ */
 :root {
-    --primary-green: #00ff00;
-    --dark-green: #00cc00;
-    --bg-dark: #1a1a1a;
-    --bg-darker: #0f0f0f;
-    --card-bg: #2a2a2a;
-    --text-light: #e0e0e0;
-    --text-bright: #ffffff;
-    --shadow-glow: rgba(0, 255, 0, 0.2);
-    --border-color: rgba(0, 255, 0, 0.1);
+    --primary-green: #2a7a2a;
+    --dark-green: #3d7d3d;
+    --bg-dark: #eaf2e8;
+    --bg-darker: #f4f8f3;
+    --card-bg: #ffffff;
+    --text-light: #3f5a3f;
+    --text-bright: #142414;
+    --shadow-glow: rgba(61, 125, 61, 0.18);
+    --border-color: #cfdecb;
+    --tint: rgba(61, 125, 61, 0.08);
+    --tint-faint: rgba(61, 125, 61, 0.03);
+    --lift-shadow: rgba(20, 36, 20, 0.12);
+    --header-shade: rgba(61, 125, 61, 0.08);
+    color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+    --primary-green: #6abf6a;
+    --dark-green: #4a8c4a;
+    --bg-dark: #0f1a0f;
+    --bg-darker: #0a0f0a;
+    --card-bg: #142014;
+    --text-light: #c8e6c8;
+    --text-bright: #e3f2e3;
+    --shadow-glow: rgba(106, 191, 106, 0.25);
+    --border-color: #1e3a1e;
+    --tint: rgba(74, 140, 74, 0.12);
+    --tint-faint: rgba(74, 140, 74, 0.05);
+    --lift-shadow: rgba(0, 0, 0, 0.45);
+    --header-shade: rgba(0, 0, 0, 0.6);
+    color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) {
+        --primary-green: #6abf6a;
+        --dark-green: #4a8c4a;
+        --bg-dark: #0f1a0f;
+        --bg-darker: #0a0f0a;
+        --card-bg: #142014;
+        --text-light: #c8e6c8;
+        --text-bright: #e3f2e3;
+        --shadow-glow: rgba(106, 191, 106, 0.25);
+        --border-color: #1e3a1e;
+        --tint: rgba(74, 140, 74, 0.12);
+        --tint-faint: rgba(74, 140, 74, 0.05);
+        --lift-shadow: rgba(0, 0, 0, 0.45);
+        --header-shade: rgba(0, 0, 0, 0.6);
+        color-scheme: dark;
+    }
 }
 
 body {
@@ -26,7 +73,7 @@ body {
 
 /* Header Section */
 header {
-    background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+    background: linear-gradient(180deg, var(--header-shade) 0%, transparent 100%);
     padding: 60px 20px 40px;
     text-align: center;
 }
@@ -79,6 +126,25 @@ h1 {
     text-decoration: underline;
 }
 
+/* Theme toggle: match system → light → dark (wired in script.js) */
+.theme-toggle {
+    margin: 0 15px;
+    padding: 6px 14px;
+    background: transparent;
+    color: var(--text-light);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    font: inherit;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: color 0.3s, border-color 0.3s;
+}
+
+.theme-toggle:hover {
+    color: var(--primary-green);
+    border-color: var(--primary-green);
+}
+
 /* Main Container */
 .main-container {
     max-width: 1200px;
@@ -125,7 +191,7 @@ h1 {
 
 .filter-btn:hover {
     border-color: var(--primary-green);
-    background: rgba(0, 255, 0, 0.1);
+    background: var(--tint);
     transform: translateY(-2px);
 }
 
@@ -216,12 +282,12 @@ h1 {
 
 .news-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 255, 0, 0.15);
+    box-shadow: 0 10px 30px var(--lift-shadow);
     border-color: var(--primary-green);
 }
 
 .news-header {
-    background: linear-gradient(135deg, rgba(0, 255, 0, 0.1) 0%, rgba(0, 255, 0, 0.05) 100%);
+    background: linear-gradient(135deg, var(--tint) 0%, var(--tint-faint) 100%);
     padding: 20px;
     display: flex;
     align-items: center;
@@ -346,12 +412,12 @@ h1 {
 
 .link-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 255, 0, 0.15);
+    box-shadow: 0 10px 30px var(--lift-shadow);
     border-color: var(--primary-green);
 }
 
 .link-icon {
-    background: linear-gradient(135deg, rgba(0, 255, 0, 0.1) 0%, rgba(0, 255, 0, 0.05) 100%);
+    background: linear-gradient(135deg, var(--tint) 0%, var(--tint-faint) 100%);
     padding: 30px;
     text-align: center;
     font-size: 2.5rem;
@@ -381,7 +447,7 @@ h1 {
 /* Footer */
 footer {
     background: var(--bg-darker);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid var(--border-color);
     padding: 40px 20px;
     text-align: center;
     margin-top: 60px;

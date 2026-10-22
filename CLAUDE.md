@@ -37,4 +37,6 @@ Filter buttons in `index.html` use `data-game` attributes. Clicking a button set
 
 ## Styling
 
-CSS variables are defined in `:root` in `style.css`. This site uses a brighter lime-green theme (`--primary-green: #00ff00`) rather than the darker forest-green of the main Randomizer Hub — keep new additions consistent with these variables rather than hardcoding color values.
+CSS variables are defined at the top of `style.css`, in **light and dark**: `:root` is the light theme and `:root[data-theme="dark"]` the dark one, both the suite's green palette (the Roadwrench theme — this site used to have its own lime-on-gray look). A `prefers-color-scheme` block repeats the dark values for no-JS. Keep new additions on these variables rather than hardcoding color values.
+
+`theme.js` (a plain `<script>` in `<head>`, so it runs before first paint) resolves the preference — `system` by default, `light` or `dark`, kept in `localStorage['theme']` — follows OS changes, and sets `<html data-theme>`. The header's **Theme** button (`#theme-toggle`, wired in `setupThemeToggle()` in `script.js`) cycles Match system → Light → Dark.

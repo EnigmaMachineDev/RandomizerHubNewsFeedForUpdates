@@ -100,7 +100,28 @@ let allNewsItems = [];
 document.addEventListener('DOMContentLoaded', () => {
     initializeApp();
     setupEventListeners();
+    setupThemeToggle();
 });
+
+// Theme toggle: match system → light → dark. The state lives in theme.js
+// (window.siteTheme), loaded in <head> so the page paints in the right theme.
+function setupThemeToggle() {
+    const toggle = document.getElementById('theme-toggle');
+    if (!toggle || !window.siteTheme) return;
+    const order = ['system', 'light', 'dark'];
+    const labels = { system: 'Match system', light: 'Light', dark: 'Dark' };
+    const render = (pref) => {
+        const next = order[(order.indexOf(pref) + 1) % order.length];
+        toggle.textContent = 'Theme: ' + labels[pref];
+        toggle.title = 'Switch to ' + labels[next].toLowerCase();
+    };
+    toggle.addEventListener('click', () => {
+        const pref = window.siteTheme.get();
+        window.siteTheme.set(order[(order.indexOf(pref) + 1) % order.length]);
+    });
+    window.siteTheme.subscribe(render);
+    render(window.siteTheme.get());
+}
 
 function initializeApp() {
     loadPatchNotes();
